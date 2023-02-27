@@ -1,0 +1,25 @@
+<% content_for :title do %>
+  <%= project.name %> Details:
+<% end %>
+<% content_for :header_button do %>
+  <%= link_to "Projects", projects_path, class: "px-4 py-2 text-lg border border-grey-400 bg-green-100 rounded-full" %>
+<% end %>
+
+<div class="p-4 border-b border-gray-400">
+  <div class="text-lg text-grey-700">
+    Name:
+  </div>
+  <div class="text-2xl text-bolder">
+    <%= project.name %>
+  </div>
+</div>
+
+<div class="p-4 border-b border-gray-400">
+  <div class="text-lg text-grey-700">
+    State:
+  </div>
+  <div class="text-2xl text-bolder">
+    <%= project.state.humanize %>
+  </div>
+</div>
+

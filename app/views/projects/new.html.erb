@@ -1,0 +1,14 @@
+<% content_for :title do %>
+  New Project
+<% end %>
+
+<%= form_with model: project do |f| %>
+  <div class="py-4 border-b border-grey-400">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="py-4">
+    <%= f.submit "Create Project", class: "leading-normal px-4 py-2 text-lg border border-grey-400 bg-green-100 rounded-full" %>
+    <%= link_to "Cancel", projects_path, class: "px-4 py-2 text-lg border border-grey-800 bg-red-100 rounded-full" %>
+    </div>
+<% end %>
