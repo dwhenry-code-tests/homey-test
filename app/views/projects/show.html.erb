@@ -2,11 +2,11 @@
   <%= project.name %> Details:
 <% end %>
 <% content_for :header_button do %>
-  <%= link_to "Projects", projects_path, class: "px-4 py-2 text-lg border border-grey-400 bg-green-100 rounded-full" %>
+  <%= link_to "Projects", root_path, class: "px-4 py-2 text-lg border border-gray-400 bg-green-100 rounded-full" %>
 <% end %>
 
 <div class="p-4 border-b border-gray-400">
-  <div class="text-lg text-grey-700">
+  <div class="text-lg text-gray-500">
     Name:
   </div>
   <div class="text-2xl text-bolder">
@@ -15,11 +15,37 @@
 </div>
 
 <div class="p-4 border-b border-gray-400">
-  <div class="text-lg text-grey-700">
+  <div class="text-lg text-gray-500">
     State:
   </div>
   <div class="text-2xl text-bolder">
     <%= project.state.humanize %>
+    <%= form_with url: next_project_comments_path(project), class: "inline" do |f| %>
+      <%= f.submit "Set to #{project.next_state.humanize}", class: "ml-10 px-4 py-2 text-lg border border-gray-400 bg-blue-100 rounded-full" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="p-4 border-b border-gray-400">
+  <div class="text-lg text-gray-500">
+    History:
+  </div>
+  <div class="text-2xl text-bolder" data-test-id="project-history">
+    <div class="py-4 grid grid-cols-5 text-bolder bg-gray-200 rounded-t-3xl">
+      <div class="pl-4 col-span-3">Comment</div>
+      <div>User</div>
+      <div>Time</div>
+    </div>
+    <%= render project.comments.recent(3) %>
+    <%= form_with model: Comment.new, url: project_comments_path(project), class: "py-4 grid grid-cols-5 text-bolder border-b border-gray-400 " do |f| %>
+      <div class="col-span-3">
+        <%= f.text_field :value, class: "w-full", placeholder: "Add Comment" %>
+      </div>
+      <div>
+        <%= f.submit "Add Comment", class: "ml-10 px-4 py-2 text-lg border border-gray-400 bg-green-100 rounded-full" %>
+      </div>
+      <div></div>
+    <% end %>
   </div>
 </div>
 

@@ -16,7 +16,7 @@ Q. What are the project states?
 A. Pending, In Progress and Complete
 
 Q. Is there any logic on project states?
-A. A project can move between any two states, except for Complete -> In Progress (it must go back to Pending first)
+A. Yes Project states must process "pending -> in progress -> completed -> pending"
 
 Q. Should state be a string or an enum?
 A. Either is fine.

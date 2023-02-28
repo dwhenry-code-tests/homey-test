@@ -6,5 +6,11 @@ Rails.application.routes.draw do
 
   root "projects#index"
 
-  resources :projects
+  resources :projects do
+    resources :comments, only: [:create] do
+      collection do
+        post :next
+      end
+    end
+  end
 end

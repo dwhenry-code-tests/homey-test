@@ -2,19 +2,19 @@
   Projects
 <% end %>
 <% content_for :header_button do %>
-  <%= link_to "Add Project", new_project_path, class: "px-4 py-2 text-lg border border-grey-400 bg-green-100 rounded-full" %>
+  <%= link_to "Add Project", new_project_path, class: "px-4 py-2 text-lg border border-gray-400 bg-green-100 rounded-full" %>
 <% end %>
 
 <% if projects.any? %>
   <% projects.each do |project| %>
-    <div class="p-4 border-b border-grey-400 grid grid-cols-4 w-1/2" data-test-id="project-<%= project.id%>">
-      <div class="pr-10 cols-2"><%= project.name %></div>
+    <div class="p-4 border-b border-gray-400 grid grid-cols-4 w-1/2" data-test-id="project-<%= project.id%>">
+      <div class="pr-10 col-span-2"><%= project.name %></div>
       <div><%= project.state.humanize %></div>
       <div><%= link_to "View", project_path(project), class: "text-blue-600 hover:text-red-600 underline" %></div>
     </div>
   <% end %>
 <% else %>
-  <div class="p-4 border-b border-grey-400">
+  <div class="p-4 border-b border-gray-400">
     No Existing Projects
   </div
 <% end %>
